@@ -5,9 +5,11 @@ class Post extends StatelessWidget {
   final PostModel postModel;
   final Color? myColor;
   final Function()? whenPressed;
+  final Function()? likePressed;
   const Post(
       {Key? key,
       required this.postModel,
+      required this.likePressed,
       required this.whenPressed,
       required this.myColor})
       : super(key: key);
@@ -49,6 +51,12 @@ class Post extends StatelessWidget {
                 icon: const Icon(
                   Icons.delete,
                   color: Color.fromARGB(255, 255, 255, 255),
+                )),
+            IconButton(
+                onPressed: likePressed,
+                icon: Icon(
+                  Icons.thumb_up,
+                  color:postModel.isLike? Color.fromARGB(255, 76, 52, 212):Color.fromARGB(255, 255, 255, 255),
                 ))
           ],
         ),
